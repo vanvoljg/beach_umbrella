@@ -3,24 +3,22 @@ defmodule Mix.Tasks.LoadAllApps do
 
   use Mix.Task
 
-  @applications ~w[
-    app_e
-  ]a
-
   @impl true
-  def run(_args) do
+  def run([app_name] = _args) do
+
     {:ok, _app} = Application.ensure_all_started(:rexbug, :permanent)
-
-    rtp = ":application.ensure_all_started/4"
+    rtp = [":application.ensure_all_started/_"]
+    # rtp = ":application.ensure_all_started/4"
     time = 60000
-    Rexbug.start(rtp, time: time)
+    msgs = 1_000_000_000
+    Rexbug.start(rtp, time: time, msgs: msgs)
 
-    Enum.each(@applications, fn app ->
-      {:ok, apps_started} = Application.ensure_all_started(app)
-      IO.puts("#{DateTime.utc_now()}: #{app}: #{inspect(apps_started)}")
-    end)
+    {:ok, apps_started} =
+      app_name
+      |> String.to_existing_atom()
+      |> Application.ensure_all_started()
 
-    IO.inspect(DateTime.utc_now())
+    IO.puts("#{DateTime.utc_now()}: #{app_name}: #{inspect(apps_started)}")
     :ok
   end
 end

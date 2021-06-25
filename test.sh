@@ -20,7 +20,7 @@ case $cmd in
     exit
     ;;
 
-  graphs)
+  graph)
     if [[ -z $(command -v perf) ]]; then
       echo "the 'perf' command is required"
     fi
@@ -51,8 +51,26 @@ case $cmd in
     exit
     ;;
 
+  trace)
+    if [[ -z ${2} ]]; then
+      echo "specify an app to trace"
+      exit 1
+    fi
+
+    mix deps.get &> /dev/null
+    mix compile &> /dev/null
+
+    echo "tracing ${2}"
+
+    mix load_all_apps ${2} > messages.txt
+
+    sort messages.txt | uniq -c | sort -nr > msgs_${2}.txt
+    rg -c ':application.ensure_all_started' messages.txt > counts_${2}.txt
+    cat counts_${2}.txt
+    ;;
+
   *)
-    echo -E "usage: test.sh <time|graphs>"
+    echo -E "usage: test.sh <time|graph|trace>"
     exit
     ;;
 esac
