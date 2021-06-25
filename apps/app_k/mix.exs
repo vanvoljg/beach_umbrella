@@ -42,7 +42,7 @@ defmodule AppK.MixProject do
       {:app_g, in_umbrella: true},
       {:app_h, in_umbrella: true},
       {:app_i, in_umbrella: true},
-      {:app_j, in_umbrella: true},
+      {:app_j, in_umbrella: true}
     ]
   end
 end

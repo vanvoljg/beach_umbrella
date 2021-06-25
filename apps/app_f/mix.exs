@@ -37,7 +37,7 @@ defmodule AppF.MixProject do
       {:app_b, in_umbrella: true},
       {:app_c, in_umbrella: true},
       {:app_d, in_umbrella: true},
-      {:app_e, in_umbrella: true},
+      {:app_e, in_umbrella: true}
     ]
   end
 end

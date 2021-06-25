@@ -33,7 +33,7 @@ defmodule AppB.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:app_a, in_umbrella: true},
+      {:app_a, in_umbrella: true}
     ]
   end
 end

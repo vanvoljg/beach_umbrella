@@ -69,6 +69,7 @@ defmodule AppA.MixProject do
       {:postgrex, "~> 0.15"},
       {:premailex, "~> 0.3"},
       {:remote_ip, "~> 1.0"},
+      {:rexbug, "~> 1.0.5"},
       {:sage, "~> 0.6.1"},
       {:stream_data, "~> 0.4", only: [:dev, :test]},
       {:swoosh, "~> 1.0"},

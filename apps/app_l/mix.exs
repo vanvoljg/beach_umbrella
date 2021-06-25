@@ -43,7 +43,7 @@ defmodule AppL.MixProject do
       {:app_h, in_umbrella: true},
       {:app_i, in_umbrella: true},
       {:app_j, in_umbrella: true},
-      {:app_k, in_umbrella: true},
+      {:app_k, in_umbrella: true}
     ]
   end
 end

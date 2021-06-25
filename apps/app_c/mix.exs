@@ -34,7 +34,7 @@ defmodule AppC.MixProject do
   defp deps do
     [
       {:app_a, in_umbrella: true},
-      {:app_b, in_umbrella: true},
+      {:app_b, in_umbrella: true}
     ]
   end
 end
